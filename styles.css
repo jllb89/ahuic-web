@@ -1,0 +1,764 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  @font-face {
+    font-family: titles;
+    src: url(media/BlueBoxSans-Headline.ttf);
+  }
+  
+  @font-face {
+    font-family: texts;
+    src: url(media/BlueBoxSans-Medium.ttf);
+  }
+  
+  @font-face {
+    font-family: btns;
+    src: url(media/BlueBoxSans-Bold.ttf);
+  }
+  
+  body,
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  .navbar {
+    background: transparent;
+    transition: top 0.3s, background 0.3s;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  .navbar.scrolled-down {
+    top: -60px; /* adjust this value to match the height of your navbar */
+  }
+  
+  .navbar.scrolled-up {
+    top: 0;
+    background: white;
+  }
+  
+  .navbar.scrolled-up .navbar-nav .nav-link {
+    color: black;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+  
+  .nav-item {
+    font-family: "btns";
+  }
+  
+  .navbar.navbar-expand-lg.navbar-light .navbar-nav .nav-link {
+    color: white;
+  }
+  
+  .title-a {
+    font-family: "titles";
+    font-size: 6rem;
+    line-height: 110%;
+    color: white;
+    align-items: center;
+  }
+  
+  .title-b {
+    font-family: "titles";
+    font-size: 4rem;
+    line-height: 110%;
+    color: white;
+    align-items: center;
+    padding-top: 4rem;
+  }
+  
+  .text-a {
+    font-family: "texts";
+    font-size: 1.2rem;
+    line-height: 120%;
+    color: white;
+    align-items: center;
+    padding-top: 1rem;
+  }
+  
+  .main-header {
+    background-color: #003ea8;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  
+  .slide-1 {
+    background-color: #003ea8;
+    padding-right: 2rem;
+    padding-bottom: 3rem;
+    margin-left: -2rem;
+  }
+  
+  .slide-2 {
+    background-color: #003ea8;
+    padding-left: 4rem; /* Adjust the padding as desired */
+    padding-right: 10rem;
+    padding-bottom: 3rem;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .slide-2 .img-header {
+    width: 145%;
+    height: auto; /* Remove the height property */
+    object-fit: contain; /* Change object-fit to contain */
+    margin-left: -5rem; /* Add negative margin to move the image to the left */
+  }
+  
+  .slide-3 {
+    background-color: #003286;
+    padding-right: 2rem;
+    padding-bottom: 3rem;
+    margin-left: -2rem;
+  }
+  
+  .video-header {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .img-header {
+    width: 100%; /* Adjust the width as desired */
+    height: auto; /* Remove the height property */
+    object-fit: contain; /* Change object-fit to contain */
+    display: block;
+  }
+
+  .img-header-2 {
+    width: 120%; /* Adjust the width as desired */
+    height: auto; /* Remove the height property */
+    object-fit: contain; /* Change object-fit to contain */
+    display: block;
+  }
+  
+  .btn-primary.shop-button {
+    background-color: #ffaa00;
+    border: none;
+    color: #003ea8;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.3rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 1.5rem 2rem; /* increased padding from 10px to 1rem */
+    border-radius: 50px;
+    font-family: "btns";
+    line-height: 1; /* set line-height to 1 for better control of the height */
+    margin-top: 2rem;
+  }
+  
+  .btn-primary.shop-button:hover {
+    color: #ffd033 ;
+    background-color: #ffffff;
+  }
+  
+  .video-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+  
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  #playPauseButton {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: #ffaa00;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #playPauseButton i {
+    transition: all 0.3s;
+  }
+  
+  #playPauseButton.play i {
+    transform: scale(0.7); /* Adjust the scaling as necessary */
+  }
+  
+  #playPauseButton.pause i {
+    transform: scale(1);
+  }
+  
+  .zoom_imagenes .image-container {
+    width: 100%;
+    padding: 0.5rem; /* Adjust the padding as desired */
+    text-align: center; /* Center the content horizontally */
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .zoom_imagenes .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+  
+  .zoom_imagenes .image-container:hover img {
+    transform: scale(1.1);
+    transition: transform 0.6s;
+  }
+  
+  .zoom_imagenes .image-container:not(:hover) img {
+    transform: scale(1);
+    transition: transform 0.6s;
+  }
+  
+  .zoom_imagenes .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: none;
+    color: white;
+    padding: 2rem;
+    font-family: "titles";
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 110%;
+    margin-bottom: 2.5rem; /* Add margin-bottom for space */
+  }
+  
+  .zoom_imagenes .text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: none;
+    color: white;
+    padding: 1rem;
+    font-family: "texts";
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 120%;
+    margin-top: 1rem; /* Add margin-top for space */
+    margin-bottom: 0.5rem;
+  }
+  
+  .img-cards {
+    background-color: #002c76;
+    padding-bottom: 2rem;
+  }
+  
+  .zoom_imagenes {
+    justify-content: center; /* Center the row content horizontally */
+    padding-top: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  /* Add this CSS to make the navbar initially transparent */
+  .navbar {
+    background: transparent !important;
+  }
+  
+  /* Change the color of the navbar links when scrolled up */
+  .navbar.scrolled-up .navbar-nav .nav-link {
+    color: #003ea8 !important;
+  }
+  
+  /* Add white background when scrolled up */
+  .navbar.scrolled-up {
+    background: white !important;
+  }
+  
+  /* Add transparent background when scrolled back to top */
+  .navbar.scrolled-top {
+    background: transparent !important;
+  }
+  
+  .comfort {
+    color: #ffaa00;
+  }
+  
+  .marquee-container {
+    background-color: #003ea8;
+    display: flex; /* Make the container a flex container */
+    overflow: hidden; /* Hide any overflow */
+    width: 100%; /* Adjust the width as needed */
+    height: 13rem; /* Adjust the height as needed */
+  }
+  
+  .marquee-container img {
+    animation: marquee 15s linear infinite; /* Adjust the animation duration as needed */
+    width: auto;
+    height: 160%; /* Set the height to match the container */
+  }
+
+.marquee-container-2 {
+  background-color: #003ea8;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 5rem;
+}
+
+.marquee-container-2 img {
+  animation: marquee 15s linear infinite;
+  width: auto;
+  height: 100%;
+}
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Adjust the translateX value based on the width of your image */
+    }
+  }
+  
+  .divider {
+    display: flex; /* Make the container a flex container */
+    justify-content: center; /* Center the image horizontally */
+    overflow: hidden; /* Hide any overflow */
+    width: 100%; /* Set the width to 100% of the parent container */
+    margin-bottom: -30px;
+  }
+  
+  .divider img {
+    width: 100%; /* Set the width to 100% of the parent container */
+    height: auto; /* Maintain the aspect ratio */
+  }
+  
+  .video-carousel-row {
+    display: flex;
+    align-items: center;
+    background-color: #003286;
+    padding-top: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-bottom: 10rem;
+    transform: scale(1.1);
+  }
+  
+  .video-carousel-wrapper {
+    flex-grow: 1;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+    white-space: nowrap;
+  }
+  
+  .scroll-btn {
+    background-color: none;
+    border: none;
+    padding: 1em;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin: 1em;
+    color: #ffffff;
+    background-color: #ffaa00;
+    border-radius: 50%;
+    width: 3rem; /* Set a fixed width equal to height */
+    height: 3rem; /* Set a fixed height equal to width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  
+  
+  .scroll-btn i {
+    transition: all 0.3s;
+  }
+  
+  .scroll-btn:hover {
+    background-color: #ffffff;
+    color: #ffd033;
+  }
+  
+  .scroll-btn:hover i {
+    transform: scale(1.2);
+  }
+  
+  .scroll-btn:focus {
+    outline: none;
+  }
+  
+  
+  .video-carousel-card {
+    position: relative;
+    display: inline-block;
+    width: calc(100% / 4 - 1rem);
+    margin-right: 1rem;
+    vertical-align: top;
+    cursor: pointer;
+  }
+  
+  .video-carousel-image-container {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .video-carousel-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .video-carousel-image-container:hover img {
+    transform: scale(1.05);
+    transition: transform 0.6s;
+  }
+  
+  .video-carousel-image-container:not(:hover) img {
+    transform: scale(1);
+    transition: transform 0.6s;
+  }
+  
+  .video-carousel-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .video-carousel-title {
+    color: white;
+    font-family: "titles";
+    font-size: 1.4rem;
+    line-height: 110%;
+    margin-bottom: 0.5rem;
+    word-break: break-word; /* Updated property */
+  }
+  
+  .video-carousel-text {
+    color: white;
+    font-family: "texts";
+    font-size: .8rem;
+    line-height: 1.4;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    word-break: break-word; /* Updated property */
+  }
+  
+  .video-carousel {
+    background-color: #003286;
+    padding-bottom: 2rem;
+  }
+  
+  .video-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .video-popup.hidden {
+    display: none;
+  }
+  
+  #popupVideo {
+    max-width: 80vw;
+    max-height: 80vh;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -160%);
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: #ffaa00;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .play-button i {
+    transition: all 0.3s;
+  }
+  
+  .play-button.play i {
+    transform: scale(0.7); /* Adjust the scaling as necessary */
+  }
+  
+  .play-button.pause i {
+    transform: scale(1);
+  }
+  
+  .container-tiktok {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    justify-content: center;
+    align-items: center; /* Center horizontally and vertically */
+    padding-bottom: 2rem;
+  }
+  
+  .tiktok-embed-container {
+    max-width: 480px;
+    margin-right: 10px;
+    padding: .5rem;
+  }
+  
+  footer {
+    padding-top: 5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    position: relative; /* Add position relative to create a containing block */
+  }
+  
+  .footer-divider {
+    position: absolute; /* Position the divider absolutely */
+    top: 1rem;
+    left: 3rem; /* Set the left position to create the padding on the left side */
+    right: 3rem; /* Set the right position to create the padding on the right side */
+    height: 1px; /* Set the height of the divider */
+    background-color: #c4c4c438; /* Set the color of the divider */
+  }
+  
+  .footer-columns {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .footer-column {
+    flex: 0 1 auto;
+    margin-right: 2rem; /* Adjust the value as per your preference */
+  }
+  
+  .footer-column:last-child {
+    margin-right: 0;
+  }
+  
+  .footer-social-media {
+    margin-left: auto;
+  }
+  
+  .text-a {
+    font-size: 14px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 5px;
+  }
+  
+  .social-media-icons li {
+    padding-top: 1rem;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .social-media-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #bdbdbd;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  
+  .social-media-icons a:hover {
+    background-color: #003286;
+    color: #ffaa00;
+    text-decoration: none;
+  }
+  
+  .title-c {
+    font-family: "btns";
+    font-size: 1rem;
+    color: #003ea8;
+  }
+  
+  .text-b {
+    font-family: "texts";
+    font-size: 0.8rem;
+    color: #406ebe;
+  }
+  
+  .footer-column .text-b a {
+    color: #406ebe;
+  }
+  
+
+  .products-container {
+    height: auto;
+  }
+
+  .text-d {
+    font-size: 2rem;
+    color: #fff;
+    font-family: 'btns';
+  }
+
+  .header-products {
+      width: 100%; /* Adjust the width as desired */
+      height: auto; /* Remove the height property */
+      object-fit: contain; /* Change object-fit to contain */
+      display: block;
+      padding-bottom: -2rem;
+    }
+  
+  .header-pro {
+    background-color: #003ea8;
+  }
+
+
+  .product-card {
+    transition: transform .2s;
+    margin-top: 20px;
+    border: none;
+    overflow: hidden; /* This will contain the rotated image */
+    width: 100%;  /* Set card width to 100% */
+}
+
+
+.product-image-container {
+    background-color: #f7f7f7; /* Default background color */
+    transition: background-color 0.3s ease;
+    height: auto;
+  padding: 3rem;
+}
+
+.product-card:hover .product-image-container {
+    background-color: #003ea8; /* Hovered background color */
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: rotate(20deg);
+}
+
+.product-details {
+    font-family: 'btns';
+    color: #003ea8;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.scrolled-down {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.card-text {
+  font-size: 1.8rem;
+  margin-top: -.5rem;
+}
+
+.card-title {
+font-size: 1rem;
+margin-top: 1.5rem;
+}
+
+
+  .mt-5 {
+    background-color: #fff;
+    width: 100%;
+  }
+  
+
+  .row.gutters {
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+ }
+ 
+ .row.gutters > .col {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+ }
+ 
+
+ .product-detail {
+  padding-top: 13rem;
+  height: auto;
+  padding-bottom: 10rem;
+ }
+
+ .detail-a {
+  background-color: #003ea8;
+ }
+
+ .detail-brand {
+  font-family: 'titles';
+  font-size: 1.5rem;
+  color: #ffaa00;
+ }
+
+ .detail-name {
+  font-family: 'titles';
+  font-size: 4rem;
+  color: #fff;
+  line-height: 4rem;
+ }
+
+ .detail-description {
+  padding-top: 1rem;
+  font-family: 'btns';
+  font-size: 1rem;
+  color: #ffffff;
+ }
